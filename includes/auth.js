@@ -13,17 +13,6 @@ function auth() {
 
             const object = { 'business_id': buffer[0], 'password': buffer[1] }
 
-            // var token = crypto.randomBytes(64).toString('hex')
-            // var expires_in = new Date(new Date().getTime() + 30 * 60000)
-            // const response = {
-            //     'status': 703,
-            //     'message': 'user is suspended please contact to admin',
-            //     'result': expires_in
-            // }
-            // res.json(response)
-
-            // return false
-
             connection.query('SELECT user_id,business_id,password,is_active,user_type FROM users where business_id=?;', [object.business_id], function (err, result) {
                 
                 if (err) throw err;
